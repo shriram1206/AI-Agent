@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Thomas - Personal Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Thomas - Personal Agent</h1>
+            <div class="subtitle">Your AI-powered assistant for coding, lifestyle, and current trends</div>
+        </header>
+        
+        <div class="chat-container">
+            <div id="chat-messages" class="messages">
+                <div class="welcome-message">
+                    👋 Hi! I'm Thomas, your personal assistant. Ask me anything!
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Ask Thomas anything..." />
+                <div class="button-group">
+                    <button id="send-btn">💬 Send</button>
+                    <button id="news-btn">📰 Get News</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
