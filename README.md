@@ -60,14 +60,16 @@ AI-Agent/
 
 ## 🔄 How to Update This Repository
 
-**New to development?** Check out [DEVELOPMENT.md](DEVELOPMENT.md) for a complete guide!
+**Need to make changes?** 📖 Read the [UPDATE_GUIDE.md](UPDATE_GUIDE.md) for step-by-step instructions!
 
 **Quick update workflow:**
-1. `python test_app.py` - Test before changes
+1. `python update.py test` - Test before changes
 2. Make your changes
-3. `python test_app.py` - Test after changes  
+3. `python update.py test` - Test after changes  
 4. `git add . && git commit -m "Your changes"`
 5. `git push`
+
+**For developers:** Check out [DEVELOPMENT.md](DEVELOPMENT.md) for the complete development guide.
 
 ## 🤝 Contributing
 
