@@ -16,23 +16,28 @@ A modern AI-powered personal assistant built with Flask and Perplexity AI. Thoma
 
 1. **Clone and install**
    ```bash
-   git clone https://github.com/yourusername/thomas-personal-agent.git
-   cd thomas-personal-agent
+   git clone https://github.com/shriram1206/AI-Agent.git
+   cd AI-Agent
    pip install -r requirements.txt
    ```
 
-2. **Add your API key** *(optional - works without it!)*
+2. **Test your setup** *(recommended)*
+   ```bash
+   python test_app.py
+   ```
+
+3. **Add your API key** *(optional - works without it!)*
    ```bash
    cp .env.example .env
    # Edit .env and add your Perplexity API key
    ```
 
-3. **Run Thomas**
+4. **Run Thomas**
    ```bash
    python app.py
    ```
    
-4. **Chat with Thomas** at `http://localhost:5000`
+5. **Chat with Thomas** at `http://localhost:5000`
 
 ## � API Key Setup
 
@@ -43,13 +48,26 @@ A modern AI-powered personal assistant built with Flask and Perplexity AI. Thoma
 ## 📁 Project Structure
 
 ```
-thomas-personal-agent/
+AI-Agent/
 ├── app.py              # Main Flask app
 ├── requirements.txt    # Dependencies  
 ├── .env.example       # API key template
+├── test_app.py        # Test suite
+├── DEVELOPMENT.md     # Update & development guide
 ├── static/            # CSS & JavaScript
 └── templates/         # HTML files
 ```
+
+## 🔄 How to Update This Repository
+
+**New to development?** Check out [DEVELOPMENT.md](DEVELOPMENT.md) for a complete guide!
+
+**Quick update workflow:**
+1. `python test_app.py` - Test before changes
+2. Make your changes
+3. `python test_app.py` - Test after changes  
+4. `git add . && git commit -m "Your changes"`
+5. `git push`
 
 ## 🤝 Contributing
 
