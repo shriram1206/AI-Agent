@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Thomas - Personal Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Thomas</h1>
+            <div class="subtitle">How can I help you today?</div>
+        </header>
+        
+        <div class="chat-container">
+            <div id="chat-messages" class="messages">
+                <div class="empty-state">
+                    <div class="welcome-message">Hey I'm Thomas How can I help you today?</div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typing-indicator">
+                <div class="message-avatar ai-avatar">T</div>
+                <div class="message-content">
+                    <span>Thomas is typing</span>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <div class="plus-icon">+</div>
+                    <input type="text" id="user-input" placeholder="Ask anything" autocomplete="off">
+                    <div class="voice-controls">
+                        <button class="voice-btn" id="voice-btn" title="Voice input">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
+                                <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                                <path d="M12 18v4"/>
+                                <path d="M8 22h8"/>
+                            </svg>
+                        </button>
+                        <button class="voice-btn" id="voice-wave-btn" title="Voice wave">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 12h18"/>
+                                <path d="M3 6h18"/>
+                                <path d="M3 18h18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
