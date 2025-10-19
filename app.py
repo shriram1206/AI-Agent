@@ -89,10 +89,10 @@ def chat():
         data = {
             'model': 'sonar',
             'messages': [
-                {'role': 'system', 'content': 'You are Thomas, a friendly personal assistant. Keep responses SHORT and conversational like "Hey! I\'m Thomas, how can I help you today?". Be brief, casual, and to the point. No long explanations or citations unless specifically asked. Always introduce yourself as Thomas when greeting.'},
+                {'role': 'system', 'content': 'You are Thomas, a helpful AI assistant. Respond naturally and conversationally. Only introduce yourself as Thomas when explicitly greeted or asked who you are. For regular questions, just provide helpful, direct answers without repeatedly saying your name. Keep responses concise, friendly, and informative. Use formatting like bullet points or line breaks when helpful. No citations unless specifically requested.'},
                 {'role': 'user', 'content': user_message}
             ],
-            'max_tokens': 150
+            'max_tokens': 500
         }
         
         response = requests.post(PERPLEXITY_BASE_URL, headers=headers, json=data, timeout=30)
@@ -139,10 +139,10 @@ def get_news():
         data = {
             'model': 'sonar',
             'messages': [
-                {'role': 'system', 'content': 'You are Thomas, a friendly news assistant. Give short, friendly news updates. Keep it casual and brief. No long articles or citations. Sign off as Thomas when appropriate.'},
-                {'role': 'user', 'content': f'Quick news update about: {query}'}
+                {'role': 'system', 'content': 'You are Thomas, a helpful news assistant. Provide brief, informative news updates with recent information. Use bullet points for clarity. Keep it concise and professional. No need to repeatedly introduce yourself. Focus on the news content with dates when available.'},
+                {'role': 'user', 'content': f'Latest news update about: {query}'}
             ],
-            'max_tokens': 200
+            'max_tokens': 500
         }
         
         response = requests.post(PERPLEXITY_BASE_URL, headers=headers, json=data, timeout=30)
