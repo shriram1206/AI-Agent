@@ -6,18 +6,19 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    background: #f7f7f8;
+    background: #ffffff;
     min-height: 100vh;
-    color: #374151;
+    color: #2d3748;
+    margin-left: 0; /* No margin - sidebar is hidden */
 }
 
 .container {
-    max-width: 768px;
+    max-width: 100%;
     margin: 0 auto;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #f7f7f8;
+    background: #ffffff;
 }
 
 header {
@@ -47,11 +48,11 @@ h1 {
 .messages {
     flex: 1;
     overflow-y: auto;
-    padding: 20px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    justify-content: center;
+    gap: 24px;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -74,11 +75,63 @@ h1 {
 
 .message {
     display: flex;
-    gap: 12px;
+    gap: 0;
     animation: slideIn 0.3s ease-out;
     align-items: flex-start;
     width: 100%;
     max-width: 768px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/* User messages - RIGHT aligned, NO bubble, NO avatar */
+.user-message {
+    background: transparent;
+    margin: 0;
+    padding: 8px 0;
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+}
+
+.user-message .message-avatar {
+    display: none;
+}
+
+.user-message .message-content {
+    text-align: right;
+    background: transparent;
+    padding: 0;
+    font-size: 16px;
+    color: #2d3748;
+    max-width: fit-content;
+}
+
+/* AI messages - LEFT aligned, NO bubble, NO avatar */
+.ai-message {
+    background: transparent;
+    margin: 0;
+    padding: 12px 0;
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.ai-message .message-avatar {
+    display: none;
+}
+
+.ai-message .message-content {
+    text-align: left;
+    background: transparent;
+    padding: 0;
+    font-size: 16px;
+    color: #2d3748;
+    max-width: 100%;
 }
 
 @keyframes slideIn {
@@ -93,16 +146,16 @@ h1 {
 }
 
 .message-avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
     font-weight: 600;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 0;
 }
 
 .user-avatar {
@@ -111,8 +164,9 @@ h1 {
 }
 
 .ai-avatar {
-    background: #ab68ff;
+    background: #19c37d;
     color: white;
+    font-family: 'Söhne', system-ui, -apple-system, sans-serif;
 }
 
 .message-content {
@@ -145,6 +199,99 @@ h1 {
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     font-size: 14px;
+    color: #d63384;
+}
+
+/* Code blocks */
+.message-content pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 12px 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    border: 1px solid #333;
+}
+
+.message-content pre code {
+    background: transparent;
+    padding: 0;
+    color: #d4d4d4;
+    border-radius: 0;
+    font-size: inherit;
+}
+
+/* Headers in messages */
+.message-content h1,
+.message-content h2,
+.message-content h3 {
+    font-weight: 600;
+    margin: 16px 0 8px 0;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+.message-content h1 {
+    font-size: 24px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 8px;
+}
+
+.message-content h2 {
+    font-size: 20px;
+}
+
+.message-content h3 {
+    font-size: 18px;
+}
+
+/* Lists */
+.message-content ul,
+.message-content ol {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+.message-content ul {
+    list-style-type: disc;
+}
+
+.message-content ol {
+    list-style-type: decimal;
+}
+
+.message-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+    color: #374151;
+}
+
+.message-content li.numbered {
+    list-style-type: decimal;
+}
+
+/* Blockquotes */
+.message-content blockquote {
+    border-left: 4px solid #10a37f;
+    padding-left: 16px;
+    margin: 12px 0;
+    color: #4b5563;
+    font-style: italic;
+}
+
+/* Links */
+.message-content a {
+    color: #10a37f;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.message-content a:hover {
+    border-bottom-color: #10a37f;
 }
 
 .message-content br {
@@ -153,14 +300,22 @@ h1 {
 
 .user-message .message-content {
     background: transparent;
-    color: #374151;
+    color: #2d3748;
     border: none;
+    padding: 0;
+    max-width: fit-content;
+    width: auto;
+    font-size: 16px;
+    line-height: 1.75;
 }
 
 .ai-message .message-content {
     background: transparent;
-    color: #374151;
+    color: #2d3748;
     border: none;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.75;
 }
 
 .input-container {
@@ -351,6 +506,9 @@ button:disabled {
     align-items: flex-start;
     width: 100%;
     max-width: 768px;
+    justify-content: flex-start; /* LEFT aligned like AI messages */
+    margin: 0 auto;
+    padding: 12px 0;
 }
 
 .typing-indicator .message-content {
@@ -358,6 +516,7 @@ button:disabled {
     align-items: center;
     gap: 8px;
     color: #6b7280;
+    text-align: left;
 }
 
 .typing-dots {
@@ -389,11 +548,11 @@ button:disabled {
 
 .welcome-message {
     text-align: center;
-    color: #374151;
-    font-size: 32px;
-    font-weight: 600;
+    color: #2d3748;
+    font-size: 28px;
+    font-weight: 400;
     margin: 0;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .empty-state {
