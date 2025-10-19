@@ -24,7 +24,12 @@ if not os.getenv('SECRET_KEY'):
 else:
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///thomas.db')
+# Database configuration - Vercel compatible
+database_url = os.getenv('DATABASE_URL', 'sqlite:///thomas.db')
+# Fix for Vercel Postgres (postgres:// -> postgresql://)
+if database_url.startswith('postgres://'):
+    database_url = database_url.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Session security
@@ -611,6 +616,12 @@ def rename_conversation(conversation_id):
         return jsonify({'success': True, 'title': conversation.title})
     
     return jsonify({'error': 'No title provided'}), 400
+
+# Vercel serverless compatibility
+if os.environ.get('VERCEL'):
+    # On Vercel, initialize database in application context
+    with app.app_context():
+        db.create_all()
 
 if __name__ == '__main__':
     with app.app_context():
