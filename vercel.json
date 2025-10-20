@@ -5,8 +5,13 @@
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
       }
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -20,7 +25,7 @@
     }
   ],
   "env": {
-    "PRODUCTION": "true",
-    "PYTHONPATH": "$PYTHONPATH:./"
-  }
+    "PRODUCTION": "true"
+  },
+  "regions": ["iad1"]
 }

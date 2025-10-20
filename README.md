@@ -2,8 +2,9 @@
 
 A modern AI-powered personal assistant built with Flask and Perplexity AI. Thomas features user authentication, conversation history management, and ChatGPT-like interface. Perfect for coding help, lifestyle advice, news updates, and general assistance.
 
-![Thomas Personal Agent](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-2.3.3-green.svg)
+![Thomas Personal Agent](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-black.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## ✨ Features
@@ -65,7 +66,29 @@ DEBUG=False
 - **Get Perplexity API key**: [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api)
 - **Generate SECRET_KEY**: Use Python's `secrets.token_hex(32)`
 
-## 🚢 Deployment (Render.com)
+## 🚢 Deployment
+
+### Vercel (Recommended) ⚡
+**Fast deployment in under 60 seconds!**
+
+1. **Push to GitHub**
+   ```bash
+   git push origin master
+   ```
+
+2. **Deploy on Vercel**
+   - Go to: https://vercel.com/new
+   - Import: `shriram1206/AI-Agent`
+   - Add environment variables:
+     - `PERPLEXITY_API_KEY`
+     - `SECRET_KEY`
+     - `DATABASE_URL` (optional: use Vercel Postgres or Supabase)
+
+3. **Click Deploy** - Done in 30-60 seconds! 🎉
+
+📖 **Detailed Guide:** See `VERCEL_READY.md` for complete instructions
+
+### Alternative: Render.com
 
 1. Push to GitHub (branch: `main`)
 2. Create new Web Service on Render
