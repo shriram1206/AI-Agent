@@ -25,11 +25,25 @@ else:
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Database configuration - Vercel compatible
-database_url = os.getenv('DATABASE_URL', 'sqlite:///thomas.db')
-# Fix for Vercel Postgres (postgres:// -> postgresql://)
-if database_url.startswith('postgres://'):
-    database_url = database_url.replace('postgres://', 'postgresql://', 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+if os.environ.get('VERCEL'):
+    # On Vercel, use PostgreSQL
+    database_url = os.environ.get('POSTGRES_URL')
+    if not database_url:
+        database_url = os.environ.get('DATABASE_URL')
+    # Fix for Vercel Postgres (postgres:// -> postgresql://)
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql+psycopg2://', 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    # Local development with SQLite
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///thomas.db'
+
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_pre_ping': True,
+    'pool_recycle': 300,
+    'pool_size': 5,
+    'max_overflow': 10
+}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Session security
